@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><canvas></canvas></title>
+
+    <style>
+    #canvas {
+        border: 2px solid black;
+
+    }
+    </style>
+</head>
+<body>
+
+    <h1>Introduksjon til canvas</h1>
+
+    <canvas id="canvas" width="400px" height="500px"></canvas>
+
+    <script>
+        const canvas = document.querySelector('#canvas')
+
+        //ctx står for context
+        let ctx = canvas.getContext ('2d')
+
+        let red 
+        let green 
+        let blue 
+
+        function skiftFarge(){
+
+        red = Math.floor(Math.random()*256)
+        green = Math.floor(Math.random()*256)
+        blue = Math.floor(Math.random()*256)
+
+
+}
+            
+
+        function tegnSirkel(e){
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            ctx.beginPath()
+
+
+
+
+            let x = e.offsetX
+            let y = e.offsetY
+            let r = 15
+
+            ctx.arc(x, y, r, 0, 2*Math.PI)
+            ctx.stroke()
+
+            ctx.fillStyle = `rgb(${red}, ${green}, ${blue})`
+            ctx.fill()
+
+
+
+        }
+
+        
+
+        canvas.addEventListener('mousemove', tegnSirkel)
+        canvas.addEventListener('click', skiftFarge)
+
+       
+    </script>
+    
+</body>
+</html>
